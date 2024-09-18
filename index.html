@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>AR Library</title>
   <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-  <script src="https://rawgit.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.js"></script>
 </head>
 <body style="margin: 0; overflow: hidden;">
   <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
@@ -30,11 +30,15 @@
     <a-entity camera></a-entity>
 
     <script>
-      // Function to toggle the visibility of the book content
-      document.querySelector('.clickable').addEventListener('click', function() {
-        const bookContent = document.getElementById('book-content');
-        bookContent.setAttribute('visible', !bookContent.getAttribute('visible'));
-      });
+      window.onload = function() {
+        const clickableElements = document.querySelectorAll('.clickable');
+        clickableElements.forEach(function(element) {
+          element.addEventListener('click', function() {
+            const bookContent = document.getElementById('book-content');
+            bookContent.setAttribute('visible', !bookContent.getAttribute('visible'));
+          });
+        });
+      };
     </script>
   </a-scene>
 </body>
