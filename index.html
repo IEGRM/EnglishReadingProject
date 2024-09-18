@@ -1,25 +1,26 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
-    <title>Interactive VR Library</title>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <title>AR Library Room</title>
   </head>
   <body>
-    <a-scene>
-      <!-- Bookshelves and books -->
-      <a-box position="0 0 -10" depth="0.1" height="10" width="20" color="#8B4513"></a-box>
-      <a-box id="book1" position="-2 1.2 -4.9" depth="0.1" height="0.8" width="0.5" color="#FF5733" class="clickable" event-set__click="openBookPage('Week40_Grade6.html')"></a-box>
-      <a-box id="book2" position="0 1.2 -4.9" depth="0.1" height="0.8" width="0.5" color="#FF5733" class="clickable" event-set__click="openBookPage('Week40_Grade7.html')"></a-box>
+    <a-scene embedded arjs>
+      <!-- Room and Shelves -->
+      <a-box position="-1 0.5 -3" depth="0.2" height="2" width="2" color="#8B4513"></a-box> <!-- Shelf 1 -->
+      <a-box position="1 0.5 -3" depth="0.2" height="2" width="2" color="#8B4513"></a-box>  <!-- Shelf 2 -->
+      <a-box position="3 0.5 -3" depth="0.2" height="2" width="2" color="#8B4513"></a-box>  <!-- Shelf 3 -->
 
-      <!-- Script to handle book clicking -->
-      <script>
-        function openBookPage(bookPage) {
-          // Open the dedicated book page in the same window or a new tab
-          window.location.href = bookPage;  // To open in same window
-          // window.open(bookPage, '_blank');  // Uncomment this to open in a new tab
-        }
-      </script>
+      <!-- Interactive Books -->
+      <a-entity geometry="primitive: plane; height: 1; width: 1.5" material="color: #FF6347" position="-1 1 -3" 
+                text="value: Book 1; color: white" event-set__click="_event: click; material.color: #FF4500"></a-entity>
+
+      <!-- Add more books here dynamically for each week -->
+      <a-entity geometry="primitive: plane; height: 1; width: 1.5" material="color: #4682B4" position="1 1 -3" 
+                text="value: Book 2; color: white" event-set__click="_event: click; material.color: #4169E1"></a-entity>
+
+      <!-- Camera and AR Marker -->
+      <a-marker-camera preset="hiro"></a-marker-camera>
     </a-scene>
   </body>
 </html>
